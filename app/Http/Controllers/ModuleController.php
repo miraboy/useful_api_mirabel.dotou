@@ -41,4 +41,17 @@ class ModuleController extends Controller
         ];
         return response()->json($res);
     }
+
+    //get the module of user
+    public function getUserModules()
+    {
+        $user = auth()->user();
+
+        $modules = $user->modules()
+            ->select('modules.id', 'modules.name', 'modules.description')
+            ->get()
+            ->makeHidden(['pivot']);
+
+        return response()->json($modules, 200);   
+    }   
 }
