@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\UrlShortenerController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\MarketplaceController;
 
 Route::post('/register',[AuthController::class, 'register']);
 Route::post('/login',[AuthController::class, 'login']);
@@ -29,6 +30,13 @@ Route::middleware(['auth:sanctum', 'module.active:Wallet'])->group(function () {
     Route::post('/wallet/transfer', [WalletController::class, 'transfer']);
     Route::post('/wallet/topup', [WalletController::class, 'topup']);
     Route::get('/wallet/transactions', [WalletController::class, 'transactions']);
+});   
+
+Route::middleware(['auth:sanctum', 'module.active:Marketplace'])->group(function () {
+    Route::post('/products', [MarketplaceController::class, 'createProduct']);
+    Route::get('/products', [MarketplaceController::class, 'getProducts']);
+    Route::post('/orders', [MarketplaceController::class, 'createOrder']);
+    Route::post('/products/{id}/restock', [MarketplaceController::class, 'restock']);
 });   
 
 // Route::get('/test', function () {
