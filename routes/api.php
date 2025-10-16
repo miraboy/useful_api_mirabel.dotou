@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\UrlShortenerController;
+use App\Http\Controllers\WalletController;
 
 Route::post('/register',[AuthController::class, 'register']);
 Route::post('/login',[AuthController::class, 'login']);
@@ -22,6 +23,13 @@ Route::middleware(['auth:sanctum', 'module.active:URL Shortener'])->group(functi
 });
 
 Route::get('/s/{code}', [UrlShortenerController::class, 'redirect']);      
+
+Route::middleware(['auth:sanctum', 'module.active:Wallet'])->group(function () {
+    Route::get('/wallet', [WalletController::class, 'show']);
+    Route::post('/wallet/transfer', [WalletController::class, 'transfer']);
+    Route::post('/wallet/topup', [WalletController::class, 'topup']);
+    Route::get('/wallet/transactions', [WalletController::class, 'transactions']);
+});   
 
 // Route::get('/test', function () {
 //     return "ça marche";
