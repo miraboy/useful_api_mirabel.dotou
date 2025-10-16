@@ -31,10 +31,20 @@ class User extends Authenticatable
                     ->withPivot('active')
                     ->withTimestamps();
     }
+
     public function shortlinks()
     {
         return $this->hasMany(\App\Models\ShortLink::class);
     }
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'sender_id');
+    }   
     /**
      * The attributes that should be hidden for serialization.
      *
