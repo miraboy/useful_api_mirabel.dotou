@@ -4,8 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
-
-Route::get('/register',[AuthController::class, 'store']);
+Route::get('/register',[AuthController::class, 'register']);
+Route::get('/login',[AuthController::class, 'login']);
+Route::get('/user', [AuthController::class, 'get_user'])->middleware('auth:sanctum');
