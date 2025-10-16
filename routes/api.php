@@ -3,9 +3,15 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ModuleController;
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
+Route::get('/register',[AuthController::class, 'register']);
+Route::get('/login',[AuthController::class, 'login']);
+Route::get('/user', [AuthController::class, 'get_user'])->middleware('auth:sanctum');
 
-Route::get('/register',[AuthController::class, 'store']);
+Route::get('/modules/{id}/activate', [ModuleController::class, 'activation'])->middleware('auth:sanctum');
+Route::get('/modules/{id}/deactivate', [ModuleController::class, 'desactivation'])->middleware('auth:sanctum');
+
+// Route::get('/test', function () {
+//     return "ça marche";
+// })->middleware('auth:sanctum', 'module.active:URL Shortener');   
