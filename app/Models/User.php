@@ -31,7 +31,10 @@ class User extends Authenticatable
                     ->withPivot('active')
                     ->withTimestamps();
     }
-    
+    public function shortlinks()
+    {
+        return $this->hasMany(\App\Models\ShortLink::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
