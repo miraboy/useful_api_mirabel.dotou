@@ -18,11 +18,6 @@
                     Transform your long URLs into short, shareable links. Track clicks and manage everything in one
                     place.
                 </p>
-                <div
-                    class="mt-4 inline-flex items-center text-xs text-gray-500 bg-white px-3 py-1 rounded-full shadow-sm">
-                    <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                    Auto-refresh every 10s
-                </div>
             </div>
 
             <!-- Messages d'alerte -->

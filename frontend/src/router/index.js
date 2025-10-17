@@ -6,6 +6,7 @@ import DashboardView from "../views/DashboardView.vue";
 import DashboardHome from "../views/DashboardHome.vue";
 import WalletView from "../views/WalletView.vue";
 import UrlShortenerView from "../views/UrlShortenerView.vue";
+import TimeTrackerView from "../views/TimeTrackerView.vue";
 
 const routes = [
     {
@@ -43,6 +44,11 @@ const routes = [
                 path: "url-shortener",
                 name: "UrlShortener",
                 component: UrlShortenerView,
+            },
+            {
+                path: "time-tracker",
+                name: "TimeTracker",
+                component: TimeTrackerView,
             },
         ],
     },

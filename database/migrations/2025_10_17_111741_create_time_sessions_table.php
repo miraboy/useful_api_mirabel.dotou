@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('time_sessions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('task_name');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time')->nullable();
+            $table->integer('duration')->nullable(); // in seconds
             $table->timestamps();
+            
+            $table->index('user_id');
         });
     }
 
