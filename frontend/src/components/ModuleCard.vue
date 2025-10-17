@@ -25,11 +25,11 @@
         <div class="mt-4 flex items-center justify-between">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
                 :class="isActive ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'">
-                {{ isActive ? 'Activé' : 'Désactivé' }}
+                {{ isActive ? 'Enabled' : 'Disabled' }}
             </span>
 
             <span v-if="loading" class="text-xs text-gray-500">
-                Chargement...
+                Loading...
             </span>
         </div>
     </div>

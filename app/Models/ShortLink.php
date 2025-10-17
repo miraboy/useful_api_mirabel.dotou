@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ShortLink extends Model
 {
+    protected $table = 'short_links';
+    
     protected $fillable = ['user_id', 'original_url', 'code', 'clicks'];
 
     public function user(): BelongsTo

@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;                                        
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\UrlShortenerController;
+use App\Http\Controllers\UrlShortenerController;                                                                                                                                                                                                                                                                                                                                                        
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\MarketplaceController;
+use App\Http\Controllers\TimeSessionController;
 
 Route::post('/register',[AuthController::class, 'register']);
 Route::post('/login',[AuthController::class, 'login']);
@@ -39,6 +40,14 @@ Route::middleware(['auth:sanctum', 'module.active:Marketplace'])->group(function
     Route::post('/orders', [MarketplaceController::class, 'createOrder']);
     Route::post('/products/{id}/restock', [MarketplaceController::class, 'restock']);
 });   
+
+Route::middleware(['auth:sanctum', 'module.active:Time Tracker'])->group(function () {
+    Route::post('/sessions/start', [TimeSessionController::class, 'start']);
+    Route::post('/sessions/stop', [TimeSessionController::class, 'stop']);
+    Route::get('/sessions', [TimeSessionController::class, 'index']);
+    Route::delete('/sessions/{id}', [TimeSessionController::class, 'destroy']);
+    Route::get('/sessions/analytics', [TimeSessionController::class, 'analytics']);
+});
 
 // Route::get('/test', function () {
 //     return "ça marche";

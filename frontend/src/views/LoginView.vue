@@ -9,8 +9,8 @@
                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-800">Connexion</h2>
-                <p class="text-gray-600 mt-2">Accédez à votre espace personnel</p>
+                <h2 class="text-3xl font-bold text-gray-800">Login</h2>
+                <p class="text-gray-600 mt-2">Access your personal space</p>
             </div>
 
             <!-- Success Message -->
@@ -21,7 +21,7 @@
                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                         clip-rule="evenodd" />
                 </svg>
-                Connexion réussie ! Redirection...
+                Login successful! Redirecting...
             </div>
 
             <form @submit.prevent="handleLogin" class="space-y-5">
@@ -47,7 +47,7 @@
                 <!-- Password -->
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
-                        Mot de passe
+                        Password
                     </label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -85,19 +85,19 @@
                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                             </path>
                         </svg>
-                        Connexion en cours...
+                        Logging in...
                     </span>
-                    <span v-else>Se connecter</span>
+                    <span v-else>Login</span>
                 </button>
             </form>
 
             <!-- Register Link -->
             <div class="mt-6 text-center">
                 <p class="text-sm text-gray-600">
-                    Pas encore de compte ?
+                    Don't have an account?
                     <router-link to="/register"
                         class="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">
-                        Créer un compte
+                        Create account
                     </router-link>
                 </p>
             </div>

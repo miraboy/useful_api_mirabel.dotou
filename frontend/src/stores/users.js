@@ -18,7 +18,7 @@ export const useUsersStore = defineStore("users", {
     },
 
     actions: {
-        // Récupérer la liste des utilisateurs
+        // Fetch list of users
         async fetchUsers() {
             this.loading = true;
             this.error = null;
@@ -29,13 +29,11 @@ export const useUsersStore = defineStore("users", {
             if (res.success) {
                 this.users = res.data;
             } else {
-                this.error =
-                    res.message ||
-                    "Erreur lors de la récupération des utilisateurs";
+                this.error = res.message || "Error fetching users";
             }
         },
 
-        // Trouver un utilisateur par son ID
+        // Find a user by ID
         getUserById(userId) {
             return this.users.find((user) => user.id === userId);
         },

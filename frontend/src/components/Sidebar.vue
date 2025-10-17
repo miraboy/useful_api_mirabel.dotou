@@ -18,7 +18,7 @@
                 <span class="font-medium">Dashboard</span>
             </router-link>
 
-            <!-- Modules actifs -->
+            <!-- Active Modules -->
             <div v-if="activeModules.length > 0" class="pt-4">
                 <p class="text-gray-400 text-xs uppercase tracking-wider mb-2 px-4">Modules</p>
 
@@ -31,9 +31,9 @@
                 </router-link>
             </div>
 
-            <!-- Message si aucun module actif -->
+            <!-- Message if no active module -->
             <div v-else class="pt-4 px-4">
-                <p class="text-gray-400 text-sm">Aucun module activé</p>
+                <p class="text-gray-400 text-sm">No active module</p>
             </div>
         </nav>
     </aside>
