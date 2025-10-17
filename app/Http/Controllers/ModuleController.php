@@ -50,7 +50,14 @@ class ModuleController extends Controller
         $modules = $user->modules()
             ->select('modules.id', 'modules.name', 'modules.description')
             ->get()
-            ->makeHidden(['pivot']);
+            ->map(function ($module) {
+                return [
+                    'id' => $module->id,
+                    'name' => $module->name,
+                    'description' => $module->description,
+                    'active' => (bool) $module->pivot->active,
+                ];
+            });
 
         return response()->json($modules, 200);   
     }   

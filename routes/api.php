@@ -11,11 +11,12 @@ use App\Http\Controllers\MarketplaceController;
 Route::post('/register',[AuthController::class, 'register']);
 Route::post('/login',[AuthController::class, 'login']);
 Route::get('/user', [AuthController::class, 'get_user'])->middleware('auth:sanctum');
+Route::get('/users', [AuthController::class, 'getUsers'])->middleware('auth:sanctum');
 
 Route::get('/modules', [ModuleController::class, 'getUserModules'])->middleware('auth:sanctum');
 
 Route::post('/modules/{id}/activate', [ModuleController::class, 'activation'])->middleware('auth:sanctum');
-Route::post('/modules/{id}/deactivate', [ModuleController::class, 'desactivation'])->middleware('auth:sanctum');
+Route::post('/modules/{id}/deactivate', [ModuleController::class, 'deactivation'])->middleware('auth:sanctum');
 
 Route::middleware(['auth:sanctum', 'module.active:URL Shortener'])->group(function () {
     Route::post('/shorten', [UrlShortenerController::class, 'shorten']);
