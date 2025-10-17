@@ -87,4 +87,17 @@ class AuthController extends Controller
         return response()->json($request->user());
 
     }
+
+    // Récupérer la liste des utilisateurs (sauf l'utilisateur connecté)
+    public function getUsers(Request $request)
+    {
+        $currentUserId = auth()->id();
+        
+        $users = User::where('id', '!=', $currentUserId)
+            ->select('id', 'name', 'email')
+            ->orderBy('name')
+            ->get();
+        
+        return response()->json($users, 200);
+    }
 }
