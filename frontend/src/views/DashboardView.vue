@@ -14,11 +14,11 @@
                         </div>
                         <div class="flex items-center space-x-4">
                             <span class="text-sm text-gray-600">
-                                {{ authStore.user?.name || 'Utilisateur' }}
+                                {{ authStore.user?.name || 'User' }}
                             </span>
                             <button @click="handleLogout"
                                 class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
-                                Déconnexion
+                                Logout
                             </button>
                         </div>
                     </div>
@@ -52,13 +52,13 @@ const pageTitle = computed(() => {
     return routeName || 'Dashboard'
 })
 
-// Initialiser l'auth et charger les modules au montage
+// Initialize auth and load modules on mount
 onMounted(async () => {
     await authStore.initializeAuth().catch((error) => {
-        console.error("Erreur lors de l'initialisation de l'auth:", error);
+        console.error("Error initializing auth:", error);
     });
 
-    // Charger les modules
+    // Load modules
     await modulesStore.fetchModules()
 })
 

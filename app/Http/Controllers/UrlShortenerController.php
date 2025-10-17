@@ -11,7 +11,7 @@ class UrlShortenerController extends Controller
     {
         $request->validate([
             'original_url' => 'required|url',
-            'custom_code' => 'nullable|string|max:10|alpha_dash|unique:shortlinks,code'
+            'custom_code' => 'nullable|string|max:10|alpha_dash|unique:short_links,code'
         ]);
 
         $code = $request->custom_code ?? Str::random(6);

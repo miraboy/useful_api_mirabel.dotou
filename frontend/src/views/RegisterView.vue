@@ -10,8 +10,8 @@
                             d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                     </svg>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-800">Inscription</h2>
-                <p class="text-gray-600 mt-2">Créez votre compte gratuitement</p>
+                <h2 class="text-3xl font-bold text-gray-800">Sign Up</h2>
+                <p class="text-gray-600 mt-2">Create your free account</p>
             </div>
             <div v-if="showSuccess"
                 class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg flex items-center animate-fade-in">
@@ -20,14 +20,14 @@
                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                         clip-rule="evenodd" />
                 </svg>
-                Compte créé avec succès ! Redirection...
+                Account created successfully! Redirecting...
             </div>
 
             <form @submit.prevent="handleRegister" class="space-y-2">
                 <!-- Name -->
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
-                        Nom complet
+                        Full Name
                     </label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -51,19 +51,19 @@
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                             </svg>
                         </div>
                         <input id="email" v-model="formData.email" type="email" required :disabled="authStore.loading"
                             class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed transition-all"
-                            placeholder="votre@email.com" />
+                            placeholder="your@email.com" />
                     </div>
                 </div>
 
                 <!-- Password -->
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
-                        Mot de passe
+                        Password
                     </label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -83,7 +83,7 @@
                 <!-- Password Confirmation -->
                 <div>
                     <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-2">
-                        Confirmer le mot de passe
+                        Confirm Password
                     </label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -104,7 +104,7 @@
                                 d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
                                 clip-rule="evenodd" />
                         </svg>
-                        Les mots de passe ne correspondent pas
+                        Passwords do not match
                     </p>
                 </div>
 
@@ -130,19 +130,19 @@
                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                             </path>
                         </svg>
-                        Création du compte...
+                        Creating account...
                     </span>
-                    <span v-else>Créer mon compte</span>
+                    <span v-else>Create Account</span>
                 </button>
             </form>
 
             <!-- Login Link -->
             <div class="my-3 text-center">
                 <p class="text-sm text-gray-600">
-                    Déjà un compte ?
+                    Already have an account?
                     <router-link to="/login"
                         class="text-purple-600 hover:text-purple-700 font-medium hover:underline transition-colors">
-                        Se connecter
+                        Login
                     </router-link>
                 </p>
             </div>

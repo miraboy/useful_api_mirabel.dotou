@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class AuthController extends Controller
 {
 
-    // methode register 
+    // Register method
     public function register(Request $request)
     {
         try {
@@ -49,7 +49,7 @@ class AuthController extends Controller
         }
     }   
 
-    //methode login
+    // Login method
     public function login(Request $request){
          try {
             $request->validate([
@@ -81,14 +81,14 @@ class AuthController extends Controller
         }
     }
     
-    //  methode get_user for take user's infos
+    // Get user method to retrieve user's info
     public function get_user(Request $request){
 
         return response()->json($request->user());
 
     }
 
-    // Récupérer la liste des utilisateurs (sauf l'utilisateur connecté)
+    // Fetch user list (excluding current user)
     public function getUsers(Request $request)
     {
         $currentUserId = auth()->id();

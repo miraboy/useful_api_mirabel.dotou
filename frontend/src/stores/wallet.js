@@ -25,7 +25,7 @@ export const useWalletStore = defineStore("wallet", {
     },
 
     actions: {
-        // Récupérer le wallet de l'utilisateur
+        // Fetch user wallet
         async fetchWallet() {
             this.loading = true;
             this.error = null;
@@ -36,12 +36,11 @@ export const useWalletStore = defineStore("wallet", {
             if (res.success) {
                 this.wallet = res.data;
             } else {
-                this.error =
-                    res.message || "Erreur lors de la récupération du wallet";
+                this.error = res.message || "Error fetching wallet";
             }
         },
 
-        // Récupérer l'historique des transactions
+        // Fetch transaction history
         async fetchTransactions() {
             this.loadingTransactions = true;
             this.error = null;
@@ -52,13 +51,11 @@ export const useWalletStore = defineStore("wallet", {
             if (res.success) {
                 this.transactions = res.data;
             } else {
-                this.error =
-                    res.message ||
-                    "Erreur lors de la récupération des transactions";
+                this.error = res.message || "Error fetching transactions";
             }
         },
 
-        // Top-up : ajouter de l'argent
+        // Top-up: add money
         async topup(amount) {
             this.loadingTopup = true;
             this.error = null;
@@ -68,22 +65,20 @@ export const useWalletStore = defineStore("wallet", {
             this.loadingTopup = false;
 
             if (res.success) {
-                this.successMessage = "Recharge effectuée avec succès !";
-                // Rafraîchir le wallet pour avoir le solde à jour
+                this.successMessage = "Top-up completed successfully!";
+                // Refresh wallet to get updated balance
                 await this.fetchWallet();
-                // Rafraîchir les transactions
+                // Refresh transactions
                 await this.fetchTransactions();
                 return true;
             } else {
                 this.error =
-                    res.message ||
-                    res.data?.message ||
-                    "Erreur lors de la recharge";
+                    res.message || res.data?.message || "Error during top-up";
                 return false;
             }
         },
 
-        // Transfer : envoyer de l'argent à un autre utilisateur
+        // Transfer: send money to another user
         async transfer(data) {
             this.loadingTransfer = true;
             this.error = null;
@@ -93,16 +88,14 @@ export const useWalletStore = defineStore("wallet", {
             this.loadingTransfer = false;
 
             if (res.success) {
-                this.successMessage = `Transfert de ${data.amount} effectué avec succès !`;
+                this.successMessage = `Transfer of ${data.amount} completed successfully!`;
                 await this.fetchWallet();
 
                 await this.fetchTransactions();
                 return true;
             } else {
                 this.error =
-                    res.message ||
-                    res.data?.message ||
-                    "Erreur lors du transfert";
+                    res.message || res.data?.message || "Error during transfer";
                 return false;
             }
         },

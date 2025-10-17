@@ -38,20 +38,20 @@ class WalletController extends Controller
             $receiver = \App\Models\User::where('email', $request->recipient_email)->first();
         }
         
-        // Vérifier que ce n'est pas soi-même
+        // Check that it's not the same person
         if ($receiver->id === auth()->id()) {
-            return response()->json(['message' => 'Vous ne pouvez pas vous transférer de l\'argent à vous-même'], 422);
+            return response()->json(['message' => 'You cannot transfer money to yourself'], 422);
         }
 
         $senderWallet = auth()->user()->wallet;
         
-        // Créer le wallet de l'expéditeur s'il n'existe pas
+        // Create sender's wallet if it doesn't exist
         if (!$senderWallet) {
-            return response()->json(['message' => 'Solde insuffisant'], 422);
+            return response()->json(['message' => 'Insufficient balance'], 422);
         }
         
         if ($senderWallet->balance < $request->amount) {
-            return response()->json(['message' => 'Solde insuffisant'], 422);
+            return response()->json(['message' => 'Insufficient balance'], 422);
         }
 
         $receiverWallet = Wallet::firstOrCreate(
@@ -120,18 +120,17 @@ class WalletController extends Controller
             ->orderBy('created_at', 'desc')
             ->get()
             ->map(function ($transaction) use ($userId) {
-                // Déterminer le type de transaction
+                // Determine transaction type
                 $type = $transaction->receiver_id === $userId ? 'credit' : 'debit';
                 
-                // Description basée sur le type
                 if ($transaction->sender_id === null) {
-                    $description = 'Recharge du wallet';
+                    $description = 'Wallet top-up';
                 } elseif ($type === 'credit') {
                     $sender = \App\Models\User::find($transaction->sender_id);
-                    $description = 'Transfert reçu de ' . ($sender ? $sender->name : 'Utilisateur inconnu');
+                    $description = 'Transfer received from ' . ($sender ? $sender->name : 'Unknown user');
                 } else {
                     $receiver = \App\Models\User::find($transaction->receiver_id);
-                    $description = 'Transfert envoyé à ' . ($receiver ? $receiver->name : 'Utilisateur inconnu');
+                    $description = 'Transfer sent to ' . ($receiver ? $receiver->name : 'Unknown user');
                 }
                 
                 return [

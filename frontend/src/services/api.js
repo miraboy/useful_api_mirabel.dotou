@@ -44,10 +44,10 @@ export function createApiClient({
     const handleError = (error) => {
         const status = error.response?.status || 500;
 
-        // Extraire le message d'erreur
-        let message = error.message || "Erreur inconnue lors de la requête";
+        // Extract error message
+        let message = error.message || "Unknown error occurred";
 
-        // Pour les erreurs de validation Laravel (422)
+        // For Laravel validation errors (422)
         if (status === 422 && error.response?.data?.errors) {
             const errors = error.response.data.errors;
             const firstError = Object.values(errors)[0];
@@ -62,7 +62,7 @@ export function createApiClient({
             return {
                 success: false,
                 status: 408,
-                message: "Temps d'attente dépassé",
+                message: "Request timeout",
             };
         }
 

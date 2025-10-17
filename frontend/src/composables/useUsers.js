@@ -7,7 +7,7 @@ export function useUsers() {
     const loading = ref(false);
     const error = ref(null);
 
-    // Lire tous les utilisateurs
+    // Fetch all users
     async function fetchUsers() {
         loading.value = true;
         const res = await api.get("/users");
@@ -17,7 +17,7 @@ export function useUsers() {
         else error.value = res.message;
     }
 
-    // Lire un utilisateur spécifique
+    // Fetch a specific user
     async function fetchUser(id) {
         loading.value = true;
         const res = await api.get(`/users/${id}`);
@@ -27,7 +27,7 @@ export function useUsers() {
         else error.value = res.message;
     }
 
-    // Créer un nouvel utilisateur
+    // Create a new user
     async function createUser(payload) {
         loading.value = true;
         const res = await api.post("/users", { data: payload });
@@ -42,7 +42,7 @@ export function useUsers() {
         }
     }
 
-    // Mettre à jour un utilisateur
+    // Update a user
     async function updateUser(id, payload) {
         loading.value = true;
         const res = await api.put(`/users/${id}`, { data: payload });
@@ -58,7 +58,7 @@ export function useUsers() {
         }
     }
 
-    // Supprimer un utilisateur
+    // Delete a user
     async function deleteUser(id) {
         loading.value = true;
         const res = await api.delete(`/users/${id}`);

@@ -5,6 +5,7 @@ import LoginView from "../views/LoginView.vue";
 import DashboardView from "../views/DashboardView.vue";
 import DashboardHome from "../views/DashboardHome.vue";
 import WalletView from "../views/WalletView.vue";
+import UrlShortenerView from "../views/UrlShortenerView.vue";
 
 const routes = [
     {
@@ -37,6 +38,11 @@ const routes = [
                 path: "wallet",
                 name: "Wallet",
                 component: WalletView,
+            },
+            {
+                path: "url-shortener",
+                name: "UrlShortener",
+                component: UrlShortenerView,
             },
         ],
     },
